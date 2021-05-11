@@ -6133,8 +6133,8 @@ var app = (function () {
     	fraction1 = new Fraction({
     			props: {
     				functionname: "",
-    				numerator: "" + (/*prior*/ ctx[0] + "% * " + /*sensitivity*/ ctx[1] + "%"),
-    				denominator: "(" + /*prior*/ ctx[0] + "% * " + /*sensitivity*/ ctx[1] + "% ) + ( " + (100 - /*specifity*/ ctx[2]).toFixed(1) + " % * " + (100 - /*prior*/ ctx[0]) + " %)",
+    				numerator: "" + (/*prior*/ ctx[0] + "% * " + /*sensitivity*/ ctx[1].toFixed(1) + "%"),
+    				denominator: "(" + /*prior*/ ctx[0] + "% * " + /*sensitivity*/ ctx[1].toFixed(1) + "% ) + ( " + (100 - /*specifity*/ ctx[2]).toFixed(1) + " % * " + (100 - /*prior*/ ctx[0]) + " %)",
     				result: (/*true_positive*/ ctx[4] / (/*true_positive*/ ctx[4] + /*false_positive*/ ctx[5]) * 100).toFixed(2) + " %"
     			},
     			$$inline: true
@@ -6185,8 +6185,8 @@ var app = (function () {
     			if (dirty & /*true_positive, false_positive*/ 48) fraction0_changes.result = "" + ((/*true_positive*/ ctx[4] / (/*true_positive*/ ctx[4] + /*false_positive*/ ctx[5]) * 100).toFixed(2) + "  %");
     			fraction0.$set(fraction0_changes);
     			const fraction1_changes = {};
-    			if (dirty & /*prior, sensitivity*/ 3) fraction1_changes.numerator = "" + (/*prior*/ ctx[0] + "% * " + /*sensitivity*/ ctx[1] + "%");
-    			if (dirty & /*prior, sensitivity, specifity*/ 7) fraction1_changes.denominator = "(" + /*prior*/ ctx[0] + "% * " + /*sensitivity*/ ctx[1] + "% ) + ( " + (100 - /*specifity*/ ctx[2]).toFixed(1) + " % * " + (100 - /*prior*/ ctx[0]) + " %)";
+    			if (dirty & /*prior, sensitivity*/ 3) fraction1_changes.numerator = "" + (/*prior*/ ctx[0] + "% * " + /*sensitivity*/ ctx[1].toFixed(1) + "%");
+    			if (dirty & /*prior, sensitivity, specifity*/ 7) fraction1_changes.denominator = "(" + /*prior*/ ctx[0] + "% * " + /*sensitivity*/ ctx[1].toFixed(1) + "% ) + ( " + (100 - /*specifity*/ ctx[2]).toFixed(1) + " % * " + (100 - /*prior*/ ctx[0]) + " %)";
     			if (dirty & /*true_positive, false_positive*/ 48) fraction1_changes.result = (/*true_positive*/ ctx[4] / (/*true_positive*/ ctx[4] + /*false_positive*/ ctx[5]) * 100).toFixed(2) + " %";
     			fraction1.$set(fraction1_changes);
     			const fraction2_changes = {};
@@ -6380,6 +6380,7 @@ var app = (function () {
     	let t14;
     	let br2;
     	let t15;
+    	let t16_value = /*specifity*/ ctx[2].toFixed(1) + "";
     	let t16;
     	let t17;
     	let t18_value = (/*persons*/ ctx[3] * (1 - /*prior*/ ctx[0] / 100) * (1 - /*specifity*/ ctx[2] / 100)).toFixed(0) + "";
@@ -6413,7 +6414,7 @@ var app = (function () {
     			t14 = space();
     			br2 = element("br");
     			t15 = text("\n\n\t\t\t\t\t\t\tMed en specifitet på ");
-    			t16 = text(/*specifity*/ ctx[2]);
+    			t16 = text(t16_value);
     			t17 = text(" % vil testen vil derudover fejlagtigt identificere ca. ");
     			t18 = text(t18_value);
     			t19 = text(" personer som positive (");
@@ -6422,11 +6423,11 @@ var app = (function () {
     			t22 = text(t22_value);
     			t23 = text(" raske personer)  selvom personerne\n\t\t\t\t\t\t\tikke er smittede (falske positive). Personer som skal\n\t\t\t\t\t\t\tisoleres eller forhindres i rejser m.m. på baggrund af\n\t\t\t\t\t\t\ten falsk positiv test.");
     			attr_dev(br0, "class", "svelte-1m1yi9d");
-    			add_location(br0, file, 133, 7, 3816);
+    			add_location(br0, file, 133, 7, 3838);
     			attr_dev(br1, "class", "svelte-1m1yi9d");
-    			add_location(br1, file, 139, 7, 4034);
+    			add_location(br1, file, 139, 7, 4056);
     			attr_dev(br2, "class", "svelte-1m1yi9d");
-    			add_location(br2, file, 140, 7, 4048);
+    			add_location(br2, file, 140, 7, 4070);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, t0, anchor);
@@ -6464,7 +6465,7 @@ var app = (function () {
     			if (dirty & /*persons, prior*/ 9 && t7_value !== (t7_value = /*persons*/ ctx[3] * (1 - /*prior*/ ctx[0] / 100) + "")) set_data_dev(t7, t7_value);
     			if (dirty & /*sensitivity*/ 2) set_data_dev(t10, /*sensitivity*/ ctx[1]);
     			if (dirty & /*sensitivity, prior, persons*/ 11 && t12_value !== (t12_value = (/*sensitivity*/ ctx[1] / 100 * (/*prior*/ ctx[0] / 100) * /*persons*/ ctx[3]).toFixed(1) + "")) set_data_dev(t12, t12_value);
-    			if (dirty & /*specifity*/ 4) set_data_dev(t16, /*specifity*/ ctx[2]);
+    			if (dirty & /*specifity*/ 4 && t16_value !== (t16_value = /*specifity*/ ctx[2].toFixed(1) + "")) set_data_dev(t16, t16_value);
     			if (dirty & /*persons, prior, specifity*/ 13 && t18_value !== (t18_value = (/*persons*/ ctx[3] * (1 - /*prior*/ ctx[0] / 100) * (1 - /*specifity*/ ctx[2] / 100)).toFixed(0) + "")) set_data_dev(t18, t18_value);
     			if (dirty & /*specifity*/ 4 && t20_value !== (t20_value = ((1 - /*specifity*/ ctx[2] / 100) * 100).toFixed(1) + "")) set_data_dev(t20, t20_value);
     			if (dirty & /*persons, prior*/ 9 && t22_value !== (t22_value = /*persons*/ ctx[3] * (1 - /*prior*/ ctx[0] / 100) + "")) set_data_dev(t22, t22_value);
@@ -6643,8 +6644,8 @@ var app = (function () {
     	fraction1 = new Fraction({
     			props: {
     				functionname: "",
-    				numerator: "" + ((1 - /*prior*/ ctx[0] / 100) * 100 + "% * " + /*specifity*/ ctx[2] + "%"),
-    				denominator: "(" + (1 - /*prior*/ ctx[0] / 100) * 100 + "% * " + /*specifity*/ ctx[2] + "% ) + (" + /*prior*/ ctx[0] + "% * " + ((1 - /*sensitivity*/ ctx[1] / 100) * 100).toFixed(1) + "%)",
+    				numerator: "" + ((1 - /*prior*/ ctx[0] / 100) * 100 + "% * " + /*specifity*/ ctx[2].toFixed(1) + "%"),
+    				denominator: "(" + (1 - /*prior*/ ctx[0] / 100) * 100 + "% * " + /*specifity*/ ctx[2].toFixed(1) + "% ) + (" + /*prior*/ ctx[0] + "% * " + ((1 - /*sensitivity*/ ctx[1] / 100) * 100).toFixed(1) + "%)",
     				result: "" + ((/*true_negative*/ ctx[6] / (/*true_negative*/ ctx[6] + /*false_negative*/ ctx[7]) * 100).toFixed(2) + "  %")
     			},
     			$$inline: true
@@ -6695,8 +6696,8 @@ var app = (function () {
     			if (dirty & /*true_negative, false_negative*/ 192) fraction0_changes.result = "" + ((/*true_negative*/ ctx[6] / (/*true_negative*/ ctx[6] + /*false_negative*/ ctx[7]) * 100).toFixed(2) + "  %");
     			fraction0.$set(fraction0_changes);
     			const fraction1_changes = {};
-    			if (dirty & /*prior, specifity*/ 5) fraction1_changes.numerator = "" + ((1 - /*prior*/ ctx[0] / 100) * 100 + "% * " + /*specifity*/ ctx[2] + "%");
-    			if (dirty & /*prior, specifity, sensitivity*/ 7) fraction1_changes.denominator = "(" + (1 - /*prior*/ ctx[0] / 100) * 100 + "% * " + /*specifity*/ ctx[2] + "% ) + (" + /*prior*/ ctx[0] + "% * " + ((1 - /*sensitivity*/ ctx[1] / 100) * 100).toFixed(1) + "%)";
+    			if (dirty & /*prior, specifity*/ 5) fraction1_changes.numerator = "" + ((1 - /*prior*/ ctx[0] / 100) * 100 + "% * " + /*specifity*/ ctx[2].toFixed(1) + "%");
+    			if (dirty & /*prior, specifity, sensitivity*/ 7) fraction1_changes.denominator = "(" + (1 - /*prior*/ ctx[0] / 100) * 100 + "% * " + /*specifity*/ ctx[2].toFixed(1) + "% ) + (" + /*prior*/ ctx[0] + "% * " + ((1 - /*sensitivity*/ ctx[1] / 100) * 100).toFixed(1) + "%)";
     			if (dirty & /*true_negative, false_negative*/ 192) fraction1_changes.result = "" + ((/*true_negative*/ ctx[6] / (/*true_negative*/ ctx[6] + /*false_negative*/ ctx[7]) * 100).toFixed(2) + "  %");
     			fraction1.$set(fraction1_changes);
     			const fraction2_changes = {};
@@ -6782,7 +6783,7 @@ var app = (function () {
     			t2 = space();
     			create_component(content.$$.fragment);
     			attr_dev(subtitle, "class", "svelte-1m1yi9d");
-    			add_location(subtitle, file, 159, 6, 4761);
+    			add_location(subtitle, file, 159, 6, 4794);
     		},
     		m: function mount(target, anchor) {
     			mount_component(title, target, anchor);
@@ -6882,6 +6883,7 @@ var app = (function () {
     	let t8;
     	let br0;
     	let t9;
+    	let t10_value = /*specifity*/ ctx[2].toFixed(1) + "";
     	let t10;
     	let t11;
     	let t12_value = (/*specifity*/ ctx[2] / 100 * (/*persons*/ ctx[3] * (1 - /*prior*/ ctx[0] / 100))).toFixed(0) + "";
@@ -6916,7 +6918,7 @@ var app = (function () {
     			t8 = text(" raske personer.");
     			br0 = element("br");
     			t9 = text("\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\tMed en specifitet på ");
-    			t10 = text(/*specifity*/ ctx[2]);
+    			t10 = text(t10_value);
     			t11 = text("% vil testen korrekt identificere ");
     			t12 = text(t12_value);
     			t13 = text(" personer som raske (sande negative)\n\t\t\t\t\t\t\t\t");
@@ -6932,13 +6934,13 @@ var app = (function () {
     			t22 = text(" personer), men som i virkeligheden\n\t\t\t\t\t\t\t\ter syge (falske negative). Personerne bliver ikke isoleret\n\t\t\t\t\t\t\t\tog kan videregive smitte.\n\t\t\t\t\t\t\t\t");
     			br2 = element("br");
     			attr_dev(br0, "class", "svelte-1m1yi9d");
-    			add_location(br0, file, 222, 56, 6673);
+    			add_location(br0, file, 222, 56, 6728);
     			attr_dev(br1, "class", "svelte-1m1yi9d");
-    			add_location(br1, file, 225, 8, 6869);
+    			add_location(br1, file, 225, 8, 6935);
     			attr_dev(br2, "class", "svelte-1m1yi9d");
-    			add_location(br2, file, 232, 8, 7278);
+    			add_location(br2, file, 232, 8, 7344);
     			attr_dev(p, "class", "svelte-1m1yi9d");
-    			add_location(p, file, 218, 7, 6451);
+    			add_location(p, file, 218, 7, 6506);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -6974,7 +6976,7 @@ var app = (function () {
     			if (dirty & /*persons*/ 8) set_data_dev(t3, /*persons*/ ctx[3]);
     			if (dirty & /*prior, persons*/ 9 && t5_value !== (t5_value = (/*prior*/ ctx[0] / 100 * /*persons*/ ctx[3]).toFixed(0) + "")) set_data_dev(t5, t5_value);
     			if (dirty & /*persons, prior*/ 9 && t7_value !== (t7_value = /*persons*/ ctx[3] * (1 - /*prior*/ ctx[0] / 100) + "")) set_data_dev(t7, t7_value);
-    			if (dirty & /*specifity*/ 4) set_data_dev(t10, /*specifity*/ ctx[2]);
+    			if (dirty & /*specifity*/ 4 && t10_value !== (t10_value = /*specifity*/ ctx[2].toFixed(1) + "")) set_data_dev(t10, t10_value);
     			if (dirty & /*specifity, persons, prior*/ 13 && t12_value !== (t12_value = (/*specifity*/ ctx[2] / 100 * (/*persons*/ ctx[3] * (1 - /*prior*/ ctx[0] / 100))).toFixed(0) + "")) set_data_dev(t12, t12_value);
     			if (dirty & /*sensitivity*/ 2) set_data_dev(t15, /*sensitivity*/ ctx[1]);
     			if (dirty & /*sensitivity, prior, persons*/ 11 && t17_value !== (t17_value = ((1 - /*sensitivity*/ ctx[1] / 100) * (/*prior*/ ctx[0] / 100 * /*persons*/ ctx[3])).toFixed(0) + "")) set_data_dev(t17, t17_value);
@@ -7314,18 +7316,18 @@ var app = (function () {
     			attr_dev(div4, "class", "paper-container svelte-1m1yi9d");
     			add_location(div4, file, 64, 4, 1744);
     			attr_dev(div5, "class", "paper-container svelte-1m1yi9d");
-    			add_location(div5, file, 123, 4, 3433);
+    			add_location(div5, file, 123, 4, 3455);
     			set_style(div6, "width", "600px");
     			set_style(div6, "float", "left");
     			attr_dev(div6, "class", "svelte-1m1yi9d");
     			add_location(div6, file, 63, 3, 1699);
     			attr_dev(div7, "class", "paper-container svelte-1m1yi9d");
-    			add_location(div7, file, 156, 4, 4631);
+    			add_location(div7, file, 156, 4, 4664);
     			attr_dev(div8, "class", "paper-container svelte-1m1yi9d");
-    			add_location(div8, file, 212, 4, 6280);
+    			add_location(div8, file, 212, 4, 6335);
     			set_style(div9, "margin-left", "640px");
     			attr_dev(div9, "class", "svelte-1m1yi9d");
-    			add_location(div9, file, 155, 3, 4593);
+    			add_location(div9, file, 155, 3, 4626);
     			set_style(div10, "width", "100%");
     			set_style(div10, "overflow", "hidden");
     			attr_dev(div10, "class", "svelte-1m1yi9d");
